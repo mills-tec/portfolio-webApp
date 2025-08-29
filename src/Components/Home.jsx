@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImg from "../assets/HeroImg.png";
+import HeroImg from "../assets/heroImg.png";
 const Home = ({ serviceRef, motion }) => {
   // const ball = {
   //   width: "100%",
