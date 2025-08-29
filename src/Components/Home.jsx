@@ -1,4 +1,5 @@
 import HeroImg from "../assets/heroImg.pn";
+
 const Home = ({ serviceRef, motion }) => {
   // const ball = {
   //   width: "100%",
