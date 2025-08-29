@@ -7,18 +7,16 @@ import { VscChevronDown } from "react-icons/vsc";
 import { VscArrowRight } from "react-icons/vsc";
 import { motion } from "framer-motion";
 
-// images and videos
-import project1 from "../assets/project1.png";
-
 const Portfolio = ({ ToggleElem }) => {
   // creating state to manage the active project in the portfolio section
   const [showProject, setShowProject] = useState(true);
   const [showScale, setShowScale] = useState(false);
 
-
   return (
     <div>
-      <h1 className="font-[Roboto] font-bold text-[30px]" data-aos="fade-right">Portfolio</h1>
+      <h1 className="font-[Roboto] font-bold text-[30px]" data-aos="fade-right">
+        Portfolio
+      </h1>
 
       {/* all projects will go in here  */}
       <div className="w-full flex justify-around  gap-[5rem] !mt-[4rem]">
