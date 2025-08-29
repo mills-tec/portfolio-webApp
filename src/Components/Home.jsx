@@ -1,6 +1,5 @@
 import React from "react";
-import HeroImg from "../assets/heroImg.png";
-import { motion } from "framer-motion";
+import HeroImg from "../assets/HeroImg.png";
 const Home = ({ serviceRef, motion }) => {
   // const ball = {
   //   width: "100%",
@@ -16,9 +15,8 @@ const Home = ({ serviceRef, motion }) => {
           duration: 0.5,
           scale: { type: "spring", visualDuration: 0.7, bounce: 0.4 },
         }}
-        
       >
-        <ul className="!text-white font-[Roboto] font-bold flex flex-col justify-center gap-[0%] overflow-hidden" >
+        <ul className="!text-white font-[Roboto] font-bold flex flex-col justify-center gap-[0%] overflow-hidden">
           <li className="text-[40px] text-[rgba(255,255,255,0.5)] font-[AncizarSerif]">
             I'm a
           </li>
@@ -47,7 +45,6 @@ const Home = ({ serviceRef, motion }) => {
           duration: 0.5,
           scale: { type: "spring", bounce: 1 }, // removed visualDuration (not valid)
         }}
-        
       >
         <img src={HeroImg} alt="" className="w-[400px]" />
       </motion.div>

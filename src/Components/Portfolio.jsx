@@ -5,6 +5,7 @@ import { useState } from "react";
 import { VscChevronUp } from "react-icons/vsc";
 import { VscChevronDown } from "react-icons/vsc";
 import { VscArrowRight } from "react-icons/vsc";
+import project1 from "../assets/project1.png";
 import { motion } from "framer-motion";
 
 const Portfolio = ({ ToggleElem }) => {
