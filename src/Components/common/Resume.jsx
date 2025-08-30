@@ -1,5 +1,4 @@
-import React from "react";
-import myresume from "../../assets/my-resume.png";
+import myresume from "../../assets/my-Resume.png";
 
 const Resume = () => {
   return (
