@@ -1,4 +1,4 @@
-import HeroImg from "../assets/heroImg.pn";
+import HeroImg from "../assets/heroImg.png";
 
 const Home = ({ serviceRef, motion }) => {
   // const ball = {
