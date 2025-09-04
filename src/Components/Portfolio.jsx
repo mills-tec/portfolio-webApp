@@ -26,7 +26,7 @@ const Portfolio = ({ ToggleElem }) => {
               description="I built a responsive weather application that allows users to search for real-time weather data by city. It fetches and displays temperature, weather conditions, humidity, and wind speed using the OpenWeatherMap API..."
               techStack={["React Js", "Tailwind CSS"]}
               githubLink="https://github.com/mills-tec/weather-app"
-              liveLink="https://weather-app-phi-seven-89.vercel.app/"
+              liveLink="https://weather-app-te5e.vercel.app/"
             />
           </div>
           {/* product Images */}
@@ -34,7 +34,7 @@ const Portfolio = ({ ToggleElem }) => {
             <ImgModule
               img={project1}
               Alt="weatherApp img"
-              liveLink="https://weather-app-phi-seven-89.vercel.app/"
+              liveLink="https://weather-app-te5e.vercel.app/"
             />
           </div>
         </div>
