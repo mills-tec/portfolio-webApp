@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
 import project1 from "../assets/project1.png";
-
 import ImgModule from "./common/ImgModule";
 import ProjectModule from "./common/ProjectModule";
 
@@ -30,7 +28,10 @@ const Portfolio = ({ ToggleElem }) => {
             />
           </div>
           {/* product Images */}
-          <div className="w-[35%] flex justify-center items-center p-2">
+          <div
+            className="w-[35%] flex justify-center items-center p-2"
+            data-aos="fade-left"
+          >
             <ImgModule
               img={project1}
               Alt="weatherApp img"

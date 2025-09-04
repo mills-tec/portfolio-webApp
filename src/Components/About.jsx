@@ -8,8 +8,6 @@ import "aos/dist/aos.css";
 import ImgModule from "./common/ImgModule";
 
 const About = ({ btnHover, contactRef, showResume, setShowResume }) => {
-  const [scaleImg, setScaleImg] = useState(false);
-
   // Initialize AOS for animations
   useEffect(() => {
     Aos.init({ duration: 800 });

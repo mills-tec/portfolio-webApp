@@ -14,6 +14,8 @@ import { GiFlute } from "react-icons/gi";
 import { FaVideo } from "react-icons/fa";
 
 import { motion } from "framer-motion";
+import ServiceModule from "./common/ServiceModule";
+import AllServices from "./common/AllServices";
 
 const Services = () => {
   const [activeCatiegory, setActiveCategory] = useState("Web");
@@ -30,7 +32,7 @@ const Services = () => {
         Services
       </h1>
       <div>
-        <ul className="flex  justify-around items-center !mt-[50px] text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
+        <ul className="flex  justify-between items-center !mt-[50px] px-20 py-5 text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
           <li
             onClick={() => setActiveCategory("Web")}
             className={`  cursor-pointer ${
@@ -53,121 +55,8 @@ const Services = () => {
         </ul>
 
         {activeCatiegory === "Web" ? (
-          //shows only when activeCatiegory is === "Web"
-          <div className=" w-full h-auto grid grid-cols-2 !mt-[30px]  ">
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-right"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <FaUser className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>Personal Portfolio Websites</p>
-              </div>
-
-              <div className="!mt-[1.3rem]  text-[16px]">
-                <p>Showcase your skills, projects, and personality with</p>
-                <p>a custom-designed portfolio. Perfect for developers,</p>
-                <p>designers, artists, and influencers who want a strong </p>
-                <p>online presence that reflects their brand.</p>
-              </div>
-            </div>
-
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-left"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <FaBusinessTime className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>Business & Company Websites</p>
-              </div>
-
-              <div className="!mt-[1.3rem]">
-                <p>Professional websites built to represent your company or</p>
-                <p>
-                  brand. These sites include essential features like service
-                </p>
-                <p>pages, contact forms, testimonials, and a clean,</p>
-                <p>corporate look to build trust and authority.</p>
-              </div>
-            </div>
-
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-right"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <FaShoppingBag className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>E-commerce Websites</p>
-              </div>
-
-              <div className="!mt-[1.3rem]">
-                <p>Sell your products online with a full-featured e-commerce</p>
-                <p>platform. Includes product pages, shopping cart, secure</p>
-                <p>checkout, inventory management, and mobile optimization.</p>
-              </div>
-            </div>
-
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-left"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <IoNewspaperOutline className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>Blog & News Websites</p>
-              </div>
-
-              <div className="!mt-[1.3rem]">
-                <p>Dynamic content-driven websites designed for writers,</p>
-                <p>bloggers, and media platforms. Features include </p>
-                <p>categories, search, recent posts, and easy-to-use content</p>
-                <p>management systems.</p>
-              </div>
-            </div>
-
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-right"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <FaRegCalendarCheck className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>Event & Booking Websites</p>
-              </div>
-
-              <div className="!mt-[1rem]">
-                <p>Perfect for events, concerts, conferences,</p>
-                <p>or service bookings. Features include event</p>
-                <p>schedules, RSVP or booking forms, payment integration,</p>
-                <p>and countdown timers.</p>
-              </div>
-            </div>
-
-            <div
-              className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-left"
-            >
-              <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                <p className="">
-                  <FaGraduationCap className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                </p>
-                <p>Educational Platforms</p>
-              </div>
-
-              <div className="!mt-[1rem]">
-                <p>Websites designed for schools, tutors, or online course</p>
-                <p>providers. Features include course listings, student</p>
-                <p>dashboards, quizzes, and secure login portals.</p>
-              </div>
-            </div>
+          <div className=" w-full">
+            <AllServices />
           </div>
         ) : (
           <div>

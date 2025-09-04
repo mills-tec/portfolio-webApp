@@ -12,7 +12,6 @@ const ImgModule = ({
       className="w-full"
       onMouseMove={() => setShowScale(true)}
       onMouseLeave={() => setShowScale(false)}
-      data-aos="fade-left"
     >
       <div className=" relative h-auto">
         <div className="absolute top-[0%] z-[1] left-[10%] !rounded-[8px]">
