@@ -140,7 +140,7 @@ function LandingPage() {
           />
         </div>
 
-        <div ref={homeRef} className="w-full  !pl-[1.1rem] relative !mt-[40px]">
+        <div ref={homeRef} className="w-full !mt-[40px]">
           <Home serviceRef={{ serviceRef }} motion={motion} />
         </div>
 
@@ -150,7 +150,7 @@ function LandingPage() {
         </div>
 
         {/* about us */}
-        <div ref={aboutRef} className="w-full h-[auto]">
+        <div ref={aboutRef} className="">
           <About
             btnHover={{
               isSecondBtnHovered,
@@ -165,10 +165,7 @@ function LandingPage() {
         </div>
 
         {/* profolio/products */}
-        <div
-          ref={portfolioRef}
-          className="w-full h-auto text-center !mt-[73px] text-white !p-[0rem]"
-        >
+        <div ref={portfolioRef} className=" !mt-[73px] text-white !p-[0rem]">
           <Portfolio
             ToggleElem={{
               isFirstBtnHovered,
@@ -179,11 +176,11 @@ function LandingPage() {
           />
         </div>
 
-        <div ref={serviceRef} className="w-full h-auto !mt-[73px]">
+        <div ref={serviceRef} className=" !mt-[73px]">
           <Services />
         </div>
 
-        <div ref={contactRef} className="w-full h-auto !mt-[73px]">
+        <div ref={contactRef} className=" !mt-[73px]">
           <Contact
             allState={{ isLoading, setIsLoading, isSubmitted, setIsSubmitted }}
           />

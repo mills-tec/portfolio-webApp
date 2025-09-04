@@ -30,7 +30,7 @@ const Services = () => {
         Services
       </h1>
       <div>
-        <ul className="flex justify-around !mt-[50px] text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
+        <ul className="flex  justify-around items-center !mt-[50px] text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
           <li
             onClick={() => setActiveCategory("Web")}
             className={`  cursor-pointer ${
@@ -54,7 +54,7 @@ const Services = () => {
 
         {activeCatiegory === "Web" ? (
           //shows only when activeCatiegory is === "Web"
-          <div className="!px-[0rem] !pr-[1.3rem] w-full h-auto grid grid-cols-2 gap-[2rem]   place-items-center !mt-[30px]  !p-[1.3rem]">
+          <div className=" w-full h-auto grid grid-cols-2 !mt-[30px]  ">
             <div
               className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
               data-aos="zoom-in-right"
@@ -193,7 +193,7 @@ const Services = () => {
 
               <div
                 className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-              data-aos="zoom-in-left"
+                data-aos="zoom-in-left"
               >
                 <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
                   <p className="">

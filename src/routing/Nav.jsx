@@ -32,12 +32,12 @@ export default function Nav({ refs, activeNav }) {
   // Destop view
   return (
     <>
-      <div className={`hidden lg:flex !mt-[1rem] w-full `}>
-        <div className="w-[100%] flex justify-between items-center ">
-          <div className="w-[40%] !pl-[0.9rem]">
+      <div className={`hidden lg:flex w-full`}>
+        <div className="w-full flex">
+          <div className="w-[40%] ">
             <img src={logoImg} alt="logoimage" className="w-[200px]" />
           </div>
-          <ul className=" w-[60%] flex justify-around items-center gap-[0rem] font-[AncizarSerif] text-[17px] ">
+          <ul className=" w-[60%]  flex justify-between items-center font-[AncizarSerif] text-[17px] ">
             {NavList.map(({ name, ref }, index) =>
               name === "Contact" ? (
                 <li
@@ -106,9 +106,7 @@ const MobileView = ({ NavList, logoImg, activeNav }) => {
         )}
         {isOpen && (
           <div className="fixed inset-0 z-70 w-full h-full !px-[1rem]">
-
-            <div className="flex justify-between items-center !mt-[1rem] gap-[1rem] "
-             >
+            <div className="flex justify-between items-center !mt-[1rem] gap-[1rem] ">
               <div className="">
                 <img src={logoImg} alt="logoimage" className="w-[160px] " />
               </div>

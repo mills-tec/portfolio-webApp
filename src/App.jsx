@@ -1,12 +1,13 @@
-  import './App.css'
-import LandingPage from './Main-Page/LandingPage'
+import "./App.css";
+import LandingPage from "./Main-Page/LandingPage";
+import Layout from "./Main-Page/Layout";
 
 function App() {
   return (
     <>
-      <LandingPage />
+      <Layout />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

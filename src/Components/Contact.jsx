@@ -4,7 +4,6 @@ import { MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 const Contact = ({ allState }) => {
   const { isLoading, setIsLoading, isSubmitted, setIsSubmitted } = allState;
@@ -41,16 +40,25 @@ const Contact = ({ allState }) => {
   return (
     <div className="w-full h-auto">
       <div className="w-full text-center !text-white ">
-        <h1 className="text-center font-[Roboto] font-bold text-[30px] !mb-[30px]" data-aos="fade-up">
+        <h1
+          className="text-center font-[Roboto] font-bold text-[30px] !mb-[30px]"
+          data-aos="fade-up"
+        >
           Contact Me
         </h1>
         <p className="font-[Roboto] text-[30px]" data-aos="fade-right">
           Let's discuss your <span className="text-[#7911ee]">project</span>
         </p>
-        <p className="!mt-[5px] text-[rgba(255,255,255,0.7)] font-[AncizarSerif] text-[19px]" data-aos="fade-right">
+        <p
+          className="!mt-[5px] text-[rgba(255,255,255,0.7)] font-[AncizarSerif] text-[19px]"
+          data-aos="fade-right"
+        >
           let's make something new, different and more meaningfull or make{" "}
         </p>
-        <p className="font-[AncizarSerif] text-[19px] text-[rgba(255,255,255,0.7)]" data-aos="fade-right">
+        <p
+          className="font-[AncizarSerif] text-[19px] text-[rgba(255,255,255,0.7)]"
+          data-aos="fade-right"
+        >
           things more visual and conceptual
         </p>
       </div>
@@ -94,17 +102,17 @@ const Contact = ({ allState }) => {
               placeholder="Full Name"
               name="name"
               required
-              className={`${inputStyle} !w-[344px] border-1 border-[rgba(255,255,255,0.1)]  rounded-[5px] `
-            }
-            data-aos="zoom-in-up"
+              className={`${inputStyle} !w-[344px] border-1 border-[rgba(255,255,255,0.1)]  rounded-[5px] `}
+              data-aos="zoom-in-up"
             />
             <input
               type="email"
               placeholder="Email Address"
               name="email"
               required
-              className={`${inputStyle} !w-[344px] border-1 border-[rgba(255,255,255,0.1)]  rounded-[5px]`}
-               data-aos="zoom-in-up"
+              className={`${inputStyle} !w-[344px] rounded-[5px]`}
+              data-aos="zoom-in-up"
+              style={{ outline: "1px solid green" }}
             />
           </div>
           <div className="!mt-[20px]" data-aos="zoom-in-up">

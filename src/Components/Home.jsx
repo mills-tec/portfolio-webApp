@@ -4,10 +4,9 @@ const Home = ({ serviceRef, motion }) => {
   // const ball = {
   //   width: "100%",
   //   height: "100%",
-
   //   }
   return (
-    <div className="w-full !px-[1.5rem] !pr-[2.5rem]  flex justify-between items-center !overflow-hidden">
+    <div className="w-full  flex justify-between items-center ">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
