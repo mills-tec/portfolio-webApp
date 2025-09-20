@@ -17,7 +17,7 @@ const Home = ({ serviceRef, motion }) => {
       >
         <ul className="!text-white font-[Roboto] font-bold flex flex-col justify-center gap-[0%] overflow-hidden">
           <li className="text-[40px] text-[rgba(255,255,255,0.5)] font-[AncizarSerif]">
-            I'm a
+            I'm a boy
           </li>
           <li className="text-[60px]">Full-Stack</li>
           <li className="text-[60px] flex justify-center items-center !gap-[0.23rem]">
