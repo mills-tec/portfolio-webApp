@@ -13,14 +13,20 @@ import Skills from "../Components/skills";
 import Resume from "../Components/common/Resume";
 import { RiCloseLargeLine } from "react-icons/ri";
 
-function LandingPage() {
+function LandingPage({
+  homeRef,
+  serviceRef,
+  portfolioRef,
+  aboutRef,
+  contactRef,
+}) {
   // Creating a ref for each section to scroll to
-  const homeRef = useRef(null);
-  const serviceRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const aboutRef = useRef(null);
-  const contactRef = useRef(null);
-  const scrollRef = useRef(null);
+  // const homeRef = useRef(null);
+  // const serviceRef = useRef(null);
+  // const portfolioRef = useRef(null);
+  // const aboutRef = useRef(null);
+  // const contactRef = useRef(null);
+  // const scrollRef = useRef(null);
 
   // Creating a state to manage the active navigation item
   const [activeNav, setActiveNav] = useState("Home");
@@ -46,7 +52,7 @@ function LandingPage() {
 
   return (
     <>
-      <div ref={scrollRef}>
+      <div>
         <AnimatePresence>
           {showResume && (
             <motion.div
@@ -133,24 +139,24 @@ function LandingPage() {
           </div>
         )}
 
-        <div>
+        <div className="w-full" ref={homeRef}>
           <NavBar
             refs={{ homeRef, serviceRef, portfolioRef, aboutRef, contactRef }}
             activeNav={{ activeNav, setActiveNav }}
           />
         </div>
 
-        <div ref={homeRef} className="w-full !mt-[40px]">
+        <div className="px-3 w-full lg:!mt-[40px] mt-[10px]">
           <Home serviceRef={{ serviceRef }} motion={motion} />
         </div>
 
         {/* skills */}
-        <div className="w-full !h-[4rem] absolute  !right-[0] !bg-[rgba(121,17,238,0.7)] flex flex-col justify-center !mt-[1rem]">
+        <div className="w-full !h-[4rem] absolute  !right-[0] !bg-[rgba(121,17,238,0.7)] flex flex-col justify-center lg:!mt-[1rem] mt-10">
           <Skills />
         </div>
 
         {/* about us */}
-        <div ref={aboutRef} className="">
+        <div ref={aboutRef} className="!mt-[160px]">
           <About
             btnHover={{
               isSecondBtnHovered,

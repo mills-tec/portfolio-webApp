@@ -15,13 +15,13 @@ const ProjectModule = ({
   const [showProject, setShowProject] = useState(true);
 
   return (
-    <div className="w-full text-start" data-aos="fade-right">
+    <div className="px-3 w-full text-start" data-aos="fade-right">
       <h2 className="text-[30px] font-[Roboto] !mb-[2rem] text-[#7911ee]">
         {projectNumber}
       </h2>
       <div
         onClick={() => setShowProject(!showProject)}
-        className="cursor-pointer flex items-end justify-between !shadow-amber-300"
+        className="cursor-pointer flex items-center justify-between !shadow-amber-300"
       >
         <h2 className="text-[30px] font-[Roboto] text-white font-bold ">
           {projectName}
@@ -43,11 +43,11 @@ const ProjectModule = ({
           <p className="text-[rgba(255,255,255,0.7)] font-[AncizarSerif] text-[20px]">
             {description}
           </p>
-          <div className="flex justify-start items-center  gap-[3rem] !mt-[1rem] text-[14px]">
+          <div className="flex lg:justify-start justify-between items-center gap-2 lg:gap-[3rem] !mt-[1rem] text-[14px]">
             {techStack.map((tech, i) => (
               <button
                 key={i}
-                className={`cursor-pointer border-[1.5px] border-[#7911ee] w-[110px] h-[40px] rounded-[5px] bg-transparent hover:!bg-[#7911ee] transition-all duration-500`}
+                className={`cursor-pointer border-[1.5px] border-[#7911ee] lg:w-[110px] w-[100px] h-[40px] rounded-[5px] bg-transparent hover:!bg-[#7911ee] transition-all duration-500`}
                 onMouseEnter={() =>
                   i === 0
                     ? ToggleElem.setIsFirstBtnHovered(true)

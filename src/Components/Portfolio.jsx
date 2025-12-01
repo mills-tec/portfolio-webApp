@@ -17,8 +17,8 @@ const Portfolio = ({ ToggleElem }) => {
 
       {/* all projects will go in here  */}
       <div>
-        <div className="w-full flex justify-between gap-[0rem] !mt-[4rem]">
-          <div className="w-[50%]">
+        <div className="w-full lg:flex items-center lg:justify-between justify-around gap-[0rem] !mt-[4rem]">
+          <div className="lg:w-[50%]">
             <ProjectModule
               ToggleElem={ToggleElem}
               description="I built a responsive weather application that allows users to search for real-time weather data by city. It fetches and displays temperature, weather conditions, humidity, and wind speed using the OpenWeatherMap API..."
@@ -29,7 +29,7 @@ const Portfolio = ({ ToggleElem }) => {
           </div>
           {/* product Images */}
           <div
-            className="w-[35%] flex justify-center items-center p-2"
+            className="lg:w-[35%] flex justify-center items-center p-2 mt-[4rem]"
             data-aos="fade-left"
           >
             <ImgModule
