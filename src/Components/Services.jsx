@@ -24,7 +24,7 @@ const Services = () => {
   const serviceClassCard = "scale-[1.03] ";
 
   return (
-    <div>
+    <div className="w-full">
       <h1
         className="text-center font-[Roboto] font-bold text-[30px] text-white"
         data-aos="fade-right"
@@ -32,7 +32,7 @@ const Services = () => {
         Services
       </h1>
       <div>
-        <ul className="flex  justify-between items-center !mt-[50px] px-20 py-5 text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
+        <ul className="w-full flex  justify-between items-center !mt-[50px] lg:px-20 py-5 text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
           <li
             onClick={() => setActiveCategory("Web")}
             className={`  cursor-pointer ${
@@ -55,7 +55,7 @@ const Services = () => {
         </ul>
 
         {activeCatiegory === "Web" ? (
-          <div className=" w-full">
+          <div className=" w-full mt-[1.5rem]">
             <AllServices />
           </div>
         ) : (

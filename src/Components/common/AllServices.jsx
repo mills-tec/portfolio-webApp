@@ -8,7 +8,7 @@ import { CiAlignLeft } from "react-icons/ci";
 
 const AllServices = () => {
   return (
-    <div className="w-full grid grid-cols-3 gap-2 overflow-hidden">
+    <div className="w-full lg:grid grid-cols-3 lg:gap-2 gap-[3rem] overflow-hidden">
       <div data-aos="fade-right">
         <ServiceModule
           title="Custom Web Develoment"

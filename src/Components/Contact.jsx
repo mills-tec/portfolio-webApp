@@ -58,13 +58,13 @@ const Contact = ({ allState }) => {
         </p>
       </div>
 
-      <div className=" flex justify-between items-center gap-5">
-        <div className=" w-[40%]" data-aos="fade-right">
+      <div className=" flex lg:flex-row flex-col justify-between lg:items-center gap-5  px-3 lg:px-0">
+        <div className=" lg:w-[40%]" data-aos="fade-right">
           <ContactInfor />
         </div>
 
         <div
-          className="bg-bgColor w-[60%] shadow-lg border border-primaryColor rounded-[10px] p-[1rem]"
+          className="bg-bgColor lg:w-[60%] mt-5 lg:mt-0 shadow-lg border border-primaryColor rounded-[10px] p-[1rem]"
           data-aos="fade-left"
         >
           <ContactForm sendEmail={sendEmail} form={form} />

@@ -6,7 +6,7 @@ const Home = ({ serviceRef, motion }) => {
   //   height: "100%",
   //   }
   return (
-    <div className="w-full  flex justify-between items-center ">
+    <div className="w-full flex lg:justify-between lg:items-center ">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -15,18 +15,18 @@ const Home = ({ serviceRef, motion }) => {
           scale: { type: "spring", visualDuration: 0.7, bounce: 0.4 },
         }}
       >
-        <ul className="!text-white font-[Roboto] font-bold flex flex-col justify-center gap-[0%] overflow-hidden">
-          <li className="text-[40px] text-[rgba(255,255,255,0.5)] font-[AncizarSerif]">
-            I'm a boy
+        <ul className="w-full !text-white font-[Roboto] font-bold lg:flex lg:flex-col lg:justify-center gap-[0%] overflow-hidden">
+          <li className="lg:text-[40px] text-[25px] text-[rgba(255,255,255,0.5)] font-[AncizarSerif]">
+            I'm a
           </li>
           <li className="text-[60px]">Full-Stack</li>
           <li className="text-[60px] flex justify-center items-center !gap-[0.23rem]">
             <p>SoftWare Developer</p>
-            <p className="!bg-[#7911ee] w-[10px] h-[10px] !mt-[30px]"></p>
+            {/* <p className="!bg-[#7911ee] w-[10px] h-[10px] lg:!mt-[30px] mt-[100px]"></p> */}
           </li>
         </ul>
         <button
-          className="!bg-[#7911ee] w-[250px] h-[55px] !text-center text-white font-[Roboto] font-normal rounded-[8px] !mt-[1rem] cursor-pointer hover:!bg-transparent border-[#7911ee] hover:border-[1.5px] hover:border-[#7911ee] transition-all duration-500"
+          className="!bg-[#7911ee] lg:w-[250px] w-full h-[55px] text-[20px] !text-center text-white font-[Roboto] font-normal rounded-[8px] !mt-[1rem] cursor-pointer hover:!bg-transparent border-[#7911ee] hover:border-[1.5px] hover:border-[#7911ee] transition-all duration-500"
           onClick={() => {
             serviceRef.serviceRef.current.scrollIntoView({
               behavior: "smooth",
@@ -45,7 +45,7 @@ const Home = ({ serviceRef, motion }) => {
           scale: { type: "spring", bounce: 1 }, // removed visualDuration (not valid)
         }}
       >
-        <img src={HeroImg} alt="" className="w-[400px]" />
+        <img src={HeroImg} alt="" className="hidden lg:flex w-[400px]" />
       </motion.div>
     </div>
   );

@@ -6,6 +6,7 @@ module.exports = {
         primaryColor: "#7911ee",
         MutedColor: "rgba(255,255,255,0.7)",
         bgColor: "#021024",
+        lightprimary: "#E0D1FB0D",
       },
       fontFamily: {
         primaryFont: ["Poppins", "sans-serif"], // headers, main text
