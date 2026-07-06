@@ -1,224 +1,113 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logoImg from "../assets/logoImg.png";
-import { useState } from "react";
-import { IoMenu } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
+import { IoMenu, IoClose } from "react-icons/io5";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Nav({ refs, activeNav }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const NavList = [
-    {
-      name: "Home",
-      ref: refs.homeRef,
-    },
-    {
-      name: "About Me",
-      ref: refs.aboutRef,
-    },
-    {
-      name: "Portfolio",
-      ref: refs.portfolioRef,
-    },
-    {
-      name: "Services",
-      ref: refs.serviceRef,
-    },
-    {
-      name: "Contact",
-      ref: refs.contactRef,
-    },
-  ];
-  const [isOkActive, setIsOkActive] = useState(false);
+  const [isOpen,   setIsOpen]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Destop view
+  const NavList = [
+    { name: "Home",      ref: refs.homeRef },
+    { name: "About",     ref: refs.aboutRef },
+    { name: "Portfolio", ref: refs.portfolioRef },
+    { name: "Services",  ref: refs.serviceRef },
+    { name: "Contact",   ref: refs.contactRef },
+  ];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollTo = (ref, name) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+    activeNav.setActiveNav(name);
+  };
+
   return (
-    <>
-      <div
-        className={`
-          flex flex-col items-center justify-center text-center`}
-      >
-        <div className="w-full flex  justify-between lg:mt-0 mt-3">
-          <div className="hidden lg:flex lg:w-[40%] ">
-            <img
-              src={logoImg}
-              alt="logoimage"
-              className="lg:w-[200px] w-[100px] "
-            />
-          </div>
-          <div className="lg:hidden w-full flex items-center justify-between">
-            <img
-              src={logoImg}
-              alt="logoimage"
-              className="lg:w-[200px] w-[120px]"
-            />
-            <div className="">
-              {!isOpen && (
-                <IoMenu
-                  className="text-[2rem] cursor-pointer text-white"
-                  onClick={() => setIsOpen(true)}
-                  size={30}
-                />
-              )}
-              {isOpen && (
-                <IoClose
-                  className=" text-[2rem] cursor-pointer  text-white  "
-                  onClick={() => setIsOpen(false)}
-                  size={30}
-                />
-              )}
-            </div>
-          </div>
-          {/* desk top view  */}
-          <ul className="hidden lg:w-[60%]  lg:flex lg:flex-row flex-col justify-between items-center font-[AncizarSerif] text-[17px] ">
-            {NavList.map(({ name, ref }, index) =>
-              name === "Contact" ? (
-                <li
-                  key={index}
-                  onClick={() => {
-                    ref.current.scrollIntoView({ behavior: "smooth" });
-                    activeNav.setActiveNav(name);
-                  }}
-                  className="overflow-hidden p-[1rem]"
-                >
-                  <button
-                    onClick={() => {
-                      setIsOkActive(true);
-                      setTimeout(() => {
-                        setIsOkActive(false);
-                      }, 300); // Reset after 300ms
-                    }}
-                    className={`cursor-pointer !bg-[#7911ee] w-[140px] h-[40px] text-white rounded-[5px] border-[#7911ee] ${
-                      activeNav.activeNav === name && "text-white"
-                    } hover:!bg-transparent hover:border-[1.5px] hover:border-[#7911ee] hover:!transition-all hover:!duration-500 ${
-                      isOkActive ? "scale-[1.09]" : "scale-[1]"
-                    } transition-transform duration-100`}
-                  >
-                    {name}
-                  </button>
-                </li>
-              ) : (
-                <li
-                  key={index}
-                  className={`font-[AncizarSerif]  cursor-pointer  ${
-                    activeNav.activeNav === name
-                      ? "text-white"
-                      : "text-[rgba(255,255,255,0.5)]"
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-borderLight"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="flex justify-between items-center py-4">
+        <img src={logoImg} alt="logo" className="w-[110px] lg:w-[150px]" />
+
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-8 font-sans text-[15px]">
+          {NavList.map(({ name, ref }) =>
+            name === "Contact" ? (
+              <button
+                key={name}
+                onClick={() => scrollTo(ref, name)}
+                className="bg-accent text-white px-6 py-2.5 rounded-full text-[14px] font-semibold hover:bg-accentDark transition-colors duration-200 cursor-pointer shadow-md shadow-accent/20"
+              >
+                Let's Talk
+              </button>
+            ) : (
+              <button
+                key={name}
+                onClick={() => scrollTo(ref, name)}
+                className={`relative cursor-pointer group font-medium transition-colors duration-200 bg-transparent border-0 ${
+                  activeNav.activeNav === name
+                    ? "text-accent"
+                    : "text-textBody hover:text-textHead"
+                }`}
+              >
+                {name}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-[2px] bg-accent rounded-full transition-all duration-200 ${
+                    activeNav.activeNav === name ? "w-full" : "w-0 group-hover:w-full"
                   }`}
-                  onClick={() => {
-                    ref.current.scrollIntoView({ behavior: "smooth" });
-                    activeNav.setActiveNav(name);
-                  }}
+                />
+              </button>
+            )
+          )}
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="lg:hidden text-textHead p-1"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <IoClose size={26} /> : <IoMenu size={26} />}
+        </button>
+      </div>
+
+      {/* Mobile dropdown — absolute so it floats over content, never pushes it down */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="lg:hidden absolute top-full left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-borderLight shadow-lg rounded-b-2xl overflow-hidden"
+          >
+            <nav className="flex flex-col py-2 gap-1 px-2">
+              {NavList.map(({ name, ref }) => (
+                <button
+                  key={name}
+                  onClick={() => { scrollTo(ref, name); setIsOpen(false); }}
+                  className={`text-left px-4 py-3 text-[15px] font-medium rounded-xl transition-colors duration-150 bg-transparent border-0 ${
+                    activeNav.activeNav === name
+                      ? "text-accent bg-accentLight"
+                      : "text-textBody hover:text-textHead hover:bg-gray-50"
+                  }`}
                 >
                   {name}
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-
-        <div className="lg:hidden w-full mt-[20px]">
-          {isOpen && (
-            <ul className=" lg:hidden w-full  h-[300px] flex flex-col items-start justify-between p-3   font-[AncizarSerif] text-[17px] ">
-              {NavList.map(({ name, ref }, index) =>
-                name === "Contact" ? (
-                  <li
-                    key={index}
-                    onClick={() => {
-                      ref.current.scrollIntoView({ behavior: "smooth" });
-                      activeNav.setActiveNav(name);
-                    }}
-                    className="overflow-hidden w-full"
-                  >
-                    <button
-                      onClick={() => {
-                        setIsOkActive(true);
-                        setTimeout(() => {
-                          setIsOkActive(false);
-                        }, 300); // Reset after 300ms
-                      }}
-                      className={`cursor-pointer !bg-[#7911ee] w-full h-[40px] text-white rounded-[5px] border-[#7911ee] ${
-                        activeNav.activeNav === name && "text-white"
-                      } hover:!bg-transparent hover:border-[1.5px] hover:border-[#7911ee] hover:!transition-all hover:!duration-500 ${
-                        isOkActive ? "scale-[1.09]" : "scale-[1]"
-                      } transition-transform duration-100`}
-                    >
-                      {name}
-                    </button>
-                  </li>
-                ) : (
-                  <li
-                    key={index}
-                    className={`font-[AncizarSerif]   cursor-pointer  ${
-                      activeNav.activeNav === name
-                        ? "text-white"
-                        : "text-[rgba(255,255,255,0.5)]"
-                    } flex items-center text-center justify-between hover:bg-lightprimary w-full px-2 transition-all duration-300 pt-[4px]`}
-                    onClick={() => {
-                      ref.current.scrollIntoView({ behavior: "smooth" });
-                      activeNav.setActiveNav(name);
-                      setIsOpen(false);
-                    }}
-                  >
-                    {name}
-                  </li>
-                )
-              )}
-            </ul>
-          )}
-        </div>
-      </div>
-      {/* <MobileView NavList={NavList} logoImg={logoImg} activeNav={activeNav} /> */}
-    </>
+                </button>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
-
-const MobileView = ({ NavList, logoImg, activeNav }) => {
-  return (
-    <div className="lg:hidden w-full flex justify-between items-center !px-[0rem] !pt-[1rem] ">
-      <div className="">
-        <img src={logoImg} alt="logoimage" className="w-[160px] " />
-      </div>
-
-      <div className="">
-        {!isOpen && (
-          <IoMenu
-            className="text-[2rem] cursor-pointer text-white"
-            onClick={() => setIsOpen(true)}
-          />
-        )}
-        {isOpen && (
-          <div className="fixed inset-0 z-70 w-full h-full !px-[1rem]">
-            <div className="flex justify-between items-center !mt-[1rem] gap-[1rem] ">
-              <div className="">
-                <img src={logoImg} alt="logoimage" className="w-[160px] " />
-              </div>
-
-              <IoClose
-                className=" text-[2rem] cursor-pointer  text-white  "
-                onClick={() => setIsOpen(false)}
-              />
-            </div>
-
-            <ul className="w-full flex flex-col justify-center align-center gap-[2rem]  !mt-[2.5rem] text-[1.5rem] !px-[0.8rem]">
-              {NavList.map(({ name, ref }, index) => (
-                <li
-                  key={index}
-                  className={`w-full font-[AncizarSerif] cursor-pointer text-white transition-all duration-200 hover:text-[#7911ee] hover:bg-white/10 ${
-                    activeNav.activeNav === name && "text-white"
-                  }`}
-                  onClick={() => {
-                    ref.current.scrollIntoView({ behavior: "smooth" });
-                    activeNav.setActiveNav(name);
-                    setIsOpen(false);
-                  }}
-                >
-                  {name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};

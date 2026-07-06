@@ -1,33 +1,32 @@
 import React from "react";
+import {
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss,
+  SiNodedotjs, SiMongodb, SiGit, SiJavascript,
+} from "react-icons/si";
 
-const Skills = () => {
-  return (
-    <div className="w-full flex  !bg-[rgba(121,17,238,0.0)]  items-center  lg:Sjustify-center">
-      <div className="marquee w-full flex justify-between !bg-[rgba(120,17,238,0.04)]  lg:gap-[4rem] gap-5">
-        <span className="  text-white font-bold !bg-[rgba(120,17,238,0.04)] lg:w-full">
-          HTML5
-        </span>
-        <span
-          className=" text-white font-bold !bg-[rgba(120,17,238,0.05)] lg:w-full
-              "
-        >
-          CSS
-        </span>
-        <span className=" text-white font-bold !bg-[rgba(120,17,238,0.05)] lg:w-full">
-          JavaScript
-        </span>
-        <span
-          className=" text-white font-bold !bg-[rgba(120,17,238,0.03)] lg:w-full
-              "
-        >
-          React js
-        </span>
-        <span className=" text-white font-bold !bg-[rgba(120,17,238,0.04)] lg:w-full">
-          Tailwind Css
-        </span>
-      </div>
+const stack = [
+  { name: "React",        Icon: SiReact,        color: "#61DAFB" },
+  { name: "Next.js",      Icon: SiNextdotjs,    color: "#111114" },
+  { name: "TypeScript",   Icon: SiTypescript,   color: "#3178C6" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss,  color: "#06B6D4" },
+  { name: "JavaScript",   Icon: SiJavascript,   color: "#F7DF1E" },
+  { name: "Node.js",      Icon: SiNodedotjs,    color: "#5FA04E" },
+  { name: "MongoDB",      Icon: SiMongodb,      color: "#47A248" },
+  { name: "Git",          Icon: SiGit,          color: "#F05032" },
+];
+
+const Skills = () => (
+  <div className="w-full border-y border-borderLight bg-white py-4 overflow-hidden">
+    {/* duplicated for seamless loop */}
+    <div className="flex gap-10 marquee-track whitespace-nowrap">
+      {[...stack, ...stack].map(({ name, Icon, color }, i) => (
+        <div key={i} className="flex items-center gap-2 text-textBody font-sans font-medium text-[14px]">
+          <Icon size={17} style={{ color }} className="shrink-0" />
+          <span>{name}</span>
+        </div>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 export default Skills;

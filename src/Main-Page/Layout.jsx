@@ -4,38 +4,32 @@ import LandingPage from "./LandingPage";
 import { useRef } from "react";
 
 const Layout = () => {
-  const homeRef = useRef(null);
-  const serviceRef = useRef(null);
+  const homeRef      = useRef(null);
+  const serviceRef   = useRef(null);
   const portfolioRef = useRef(null);
-  const aboutRef = useRef(null);
-  const contactRef = useRef(null);
-  const scrollRef = useRef(null);
+  const aboutRef     = useRef(null);
+  const contactRef   = useRef(null);
 
-  const scrollToSection = (ref) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <div className="lg:px-[2rem] px-[10px] flex flex-col gap-[3rem] ">
-      <LandingPage
-        homeRef={homeRef}
-        serviceRef={serviceRef}
-        portfolioRef={portfolioRef}
-        aboutRef={aboutRef}
-        contactRef={contactRef}
-        scrollRef={scrollRef}
-      />
+    <div className="min-h-screen" style={{ backgroundColor: "#F4F3FA" }}>
+      <div className="lg:px-[3rem] px-4">
+        <LandingPage
+          homeRef={homeRef}
+          serviceRef={serviceRef}
+          portfolioRef={portfolioRef}
+          aboutRef={aboutRef}
+          contactRef={contactRef}
+        />
+      </div>
       <Footer
         onNavigate={scrollToSection}
-        refs={{
-          homeRef,
-          aboutRef,
-          portfolioRef,
-          serviceRef,
-          contactRef,
-        }}
+        refs={{ homeRef, aboutRef, portfolioRef, serviceRef, contactRef }}
       />
       <ScrollToTop />
     </div>
   );
 };
+
 export default Layout;
