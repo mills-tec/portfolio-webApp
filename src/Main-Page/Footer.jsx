@@ -1,118 +1,92 @@
 import React from "react";
 import logoImg from "../assets/logoImg.png";
-import { IoLocation } from "react-icons/io5";
-import { MdEmail } from "react-icons/md";
-import { IoCallSharp } from "react-icons/io5";
-import { FaLinkedin } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = ({ onNavigate, refs }) => {
-  return (
-    <footer className="w-full bg-lightprimary text-white rounded-lg shadow-lg px-3 lg:px-[3rem] py-[2rem] ">
-      <div className="w-full lg:flex justify-around items-start  font-primaryFont  ">
-        <div className="flex flex-col gap-[1.5rem]">
-          <img src={logoImg} alt="" className="w-[150px]" />
+  const quickLinks = [
+    { label: "Home",      ref: refs.homeRef },
+    { label: "About",     ref: refs.aboutRef },
+    { label: "Portfolio", ref: refs.portfolioRef },
+    { label: "Services",  ref: refs.serviceRef },
+    { label: "Contact",   ref: refs.contactRef },
+  ];
 
-          <div className="font-primaryFont text-[14px] text-[rgba(235,235,235,0.7)]">
-            <p>Helping brands and businesses stand out </p>
-            <p>with high-quality websites and web applications.</p>
+  const services = [
+    "Web Development",
+    "UI / UX Design",
+    "E-commerce Platforms",
+    "App Maintenance",
+  ];
+
+  return (
+    <footer className="w-full bg-white border-t border-borderLight px-4 lg:px-[3rem] pt-12 pb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-10">
+
+        {/* Brand */}
+        <div className="lg:col-span-1 flex flex-col gap-4">
+          <img src={logoImg} alt="T-Prince Technology" className="w-[130px]" />
+          <p className="font-sans text-[14px] text-textBody leading-relaxed max-w-[240px]">
+            Helping brands stand out with modern, high-performance web products.
+          </p>
+          <div className="flex items-center gap-3 mt-1">
+            <a href="https://github.com/mills-tec"           target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <FaGithub    size={20} className="text-textMuted hover:text-textHead transition-colors duration-200" />
+            </a>
+            <a href="https://www.linkedin.com/in/prince-nsude/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FaLinkedin  size={20} className="text-textMuted hover:text-accent  transition-colors duration-200" />
+            </a>
+            <a href="https://www.instagram.com/talentdprince/"  target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram size={20} className="text-textMuted hover:text-pink-500 transition-colors duration-200" />
+            </a>
           </div>
-          <ul className="flex flex-col text-[14px] font-primaryFont gap-[5px] text-[rgba(235,235,235,0.9)]">
-            <li className="flex items-center gap-[7px]">
-              <div className="bg-primaryColor w-[25px] h-[25px] text-center flex justify-center items-center rounded-[5px]">
-                <IoCallSharp />
-              </div>
-              <p>+123 7069531564</p>
-            </li>
-            <li className="flex items-center gap-[7px]">
-              <div className="bg-primaryColor w-[25px] h-[25px] text-center flex justify-center items-center rounded-[5px]">
-                <IoLocation />
-              </div>
-              123 Main St, City, Country
-            </li>
-            <li className="flex items-center gap-[7px]">
-              <div className="bg-primaryColor w-[25px] h-[25px] text-center flex justify-center items-center rounded-[5px]">
-                <MdEmail />
-              </div>
-              <p>princensude@gmail.com</p>
-            </li>
+        </div>
+
+        {/* Quick links */}
+        <div>
+          <p className="font-sans font-semibold text-[14px] text-textHead mb-4 uppercase tracking-wider">Quick Links</p>
+          <ul className="flex flex-col gap-2.5">
+            {quickLinks.map(({ label, ref }) => (
+              <li key={label}>
+                <button
+                  onClick={() => onNavigate(ref)}
+                  className="font-sans text-[14px] text-textBody hover:text-accent transition-colors duration-150 bg-transparent border-0 cursor-pointer text-left"
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
-        <div className="hidden lg:flex w-[1px] h-[220px] bg-white/20"></div>
-        <div className="hidden lg:flex flex-col">
-          <p className="text-[20px] mb-4">Navigation</p>
-          <u className="text-[14px] text-white/20 flex flex-col gap-[10px] ">
-            <li
-              className="hover:text-white/70 transition-all duration-200 cursor-pointer"
-              onClick={() => onNavigate(refs.homeRef)}
-            >
-              Home
-            </li>
-            <li
-              className="hover:text-white/70 transition-all duration-200 cursor-pointer"
-              onClick={() => onNavigate(refs.aboutRef)}
-            >
-              About us
-            </li>
-            <li
-              className="hover:text-white/70 transition-all duration-200 cursor-pointer"
-              onClick={() => onNavigate(refs.portfolioRef)}
-            >
-              Projects
-            </li>
-            <li
-              className="hover:text-white/70 transition-all duration-200 cursor-pointer"
-              onClick={() => onNavigate(refs.serviceRef)}
-            >
-              Services
-            </li>
-          </u>
+
+        {/* Services */}
+        <div>
+          <p className="font-sans font-semibold text-[14px] text-textHead mb-4 uppercase tracking-wider">Services</p>
+          <ul className="flex flex-col gap-2.5">
+            {services.map((s) => (
+              <li key={s} className="font-sans text-[14px] text-textBody">{s}</li>
+            ))}
+          </ul>
         </div>
-        <div className="hidden lg:flex w-[1px]  h-[220px] bg-white/20"></div>
+
+        {/* Contact */}
+        <div>
+          <p className="font-sans font-semibold text-[14px] text-textHead mb-4 uppercase tracking-wider">Contact</p>
+          <ul className="flex flex-col gap-2.5">
+            <li className="font-sans text-[14px] text-textBody">+234 706 953 1564</li>
+            <li className="font-sans text-[14px] text-textBody">princensude6@gmail.com</li>
+            <li className="font-sans text-[14px] text-textBody">Lagos, Nigeria</li>
+          </ul>
+        </div>
+
       </div>
-      <div className="border-t-[1px] border-[rgba(255,255,255,0.2)] mt-10 flex items-center pt-5 justify-between lg:text-[14px] text-[12px] ">
-        <p>&copy; 2024 My Company. All rights reserved.</p>
-        <div className="flex items-center gap-1">
-          <h2 className="text-[14px] ">Follow Me: </h2>
-          <div className="hidden lg:flex gap-1">
-            <div>
-              <a
-                href="https://www.linkedin.com/in/prince-nsude/"
-                target="_blank"
-              >
-                <FaLinkedin size={25} />
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://www.instagram.com/talentdprince/"
-                target="_blank"
-              >
-                <FaInstagramSquare size={25} />
-              </a>
-            </div>
-          </div>
-          <div className="lg:hidden flex gap-1">
-            <div>
-              <a
-                href="https://www.linkedin.com/in/prince-nsude/"
-                target="_blank"
-              >
-                <FaLinkedin className="text-[20px]" />
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://www.instagram.com/talentdprince/"
-                target="_blank"
-              >
-                <FaInstagramSquare className="text-[20px]" />
-              </a>
-            </div>
-          </div>
-        </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-borderLight pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[13px] text-textMuted font-sans">
+        <p>&copy; {new Date().getFullYear()} T-Prince Technology. All rights reserved.</p>
+        <p>Built with React &amp; Tailwind CSS</p>
       </div>
     </footer>
   );
 };
+
 export default Footer;

@@ -1,148 +1,133 @@
 import React from "react";
-import { useState, useRef } from "react";
-import { FaUser } from "react-icons/fa6";
-import { FaBusinessTime } from "react-icons/fa6";
-import { FaShoppingBag } from "react-icons/fa";
-import { IoNewspaperOutline } from "react-icons/io5";
-import { FaRegCalendarCheck } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa6";
+import { HiArrowRight } from "react-icons/hi2";
+import { FaCode, FaMobileAlt, FaShoppingCart, FaWrench } from "react-icons/fa";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
-// msuci incons
-import { GiSaxophone } from "react-icons/gi";
-import { FaMicrophoneLines } from "react-icons/fa6";
-import { GiFlute } from "react-icons/gi";
-import { FaVideo } from "react-icons/fa";
+const services = [
+  {
+    Icon: FaCode,
+    title: "Web Development",
+    desc: "Custom, performant websites and web apps built with modern frameworks.",
+  },
+  {
+    Icon: MdOutlineDashboardCustomize,
+    title: "UI / UX Design",
+    desc: "Clean, intuitive interfaces that users love and convert.",
+  },
+  {
+    Icon: FaShoppingCart,
+    title: "E-commerce Platforms",
+    desc: "Scalable online stores with secure payment and inventory management.",
+  },
+  {
+    Icon: FaWrench,
+    title: "Maintenance & Support",
+    desc: "Ongoing updates, bug fixes, and performance monitoring.",
+  },
+];
 
-import { motion } from "framer-motion";
-import ServiceModule from "./common/ServiceModule";
-import AllServices from "./common/AllServices";
-
-const Services = () => {
-  const [activeCatiegory, setActiveCategory] = useState("Web");
-
-  // creating Reuseable ClassCard for each service card
-  const serviceClassCard = "scale-[1.03] ";
-
+/* ── right-side mock dashboard ── */
+const MockDashboard = () => {
+  const bars = [38, 60, 44, 78, 52, 88, 66];
   return (
-    <div className="w-full">
-      <h1
-        className="text-center font-[Roboto] font-bold text-[30px] text-white"
-        data-aos="fade-right"
-      >
-        Services
-      </h1>
-      <div>
-        <ul className="w-full flex  justify-between items-center !mt-[50px] lg:px-20 py-5 text-[rgba(255,255,255,0.9)] text-[20px] font-[Roboto] !overflow-hidden">
-          <li
-            onClick={() => setActiveCategory("Web")}
-            className={`  cursor-pointer ${
-              activeCatiegory === "Web" && "text-[#7911ee]"
-            }`}
-            data-aos="fade-up"
-          >
-            Web Development
-          </li>
+    <div className="bg-white rounded-2xl p-6 shadow-xl border border-borderLight w-full max-w-[360px]">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5">
+        <div>
+          <p className="text-[11px] text-textMuted font-medium uppercase tracking-wider">Overview</p>
+          <p className="text-[16px] font-bold text-textHead font-sans">Analytics</p>
+        </div>
+        <span className="bg-accentLight text-accent text-[11px] font-semibold px-3 py-1 rounded-full">Live</span>
+      </div>
 
-          <li
-            onClick={() => setActiveCategory("Music")}
-            className={`cursor-pointer ${
-              activeCatiegory === "Music" && "text-[#7911ee]"
-            }`}
-            data-aos="fade-up"
-          >
-            Music/Intertainment
-          </li>
-        </ul>
-
-        {activeCatiegory === "Web" ? (
-          <div className=" w-full mt-[1.5rem]">
-            <AllServices />
+      {/* Stats row */}
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        {[
+          { label: "Revenue",    value: "$12.4k", delta: "↑ 12%", bg: "bg-accentLight",  text: "text-accent" },
+          { label: "Users",      value: "1,240",  delta: "↑ 8%",  bg: "bg-emerald-50",   text: "text-emerald-600" },
+        ].map(({ label, value, delta, bg, text }) => (
+          <div key={label} className={`${bg} rounded-xl p-3`}>
+            <p className="text-[11px] text-textMuted font-medium">{label}</p>
+            <p className="text-[18px] font-bold text-textHead font-sans leading-tight">{value}</p>
+            <p className={`text-[11px] font-semibold ${text}`}>{delta}</p>
           </div>
-        ) : (
-          <div>
-            <div className="!px-[0rem] !pr-[1.3rem] w-full h-auto grid grid-cols-2 gap-[2rem]   place-items-center !mt-[30px]  !p-[1.3rem]">
-              <div
-                className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-                data-aos="zoom-in-right"
-              >
-                <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                  <p className="">
-                    <GiSaxophone className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                  </p>
-                  <p>Live Saxophone Performances</p>
-                </div>
+        ))}
+      </div>
 
-                <div className="!mt-[1.3rem]  text-[16px]">
-                  <p>Add elegance and emotion to your event with soulful</p>
-                  <p>saxophone music. Available for weddings, birthdays, </p>
-                  <p>church events, and corporate functions.Genres: Gospel,</p>
-                  <p>Afrobeat, Highlife, Jazz, and Worship.</p>
-                </div>
-              </div>
+      {/* Mini bar chart */}
+      <div className="bg-bgBase rounded-xl p-4">
+        <p className="text-[11px] text-textMuted font-medium mb-3">Weekly Growth</p>
+        <div className="flex items-end gap-1.5 h-16">
+          {bars.map((h, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-sm transition-all duration-300"
+              style={{
+                height: `${h}%`,
+                backgroundColor: i === 5 ? "#6C4CF1" : "#EEE9FE",
+              }}
+            />
+          ))}
+        </div>
+      </div>
 
-              <div
-                className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%]  flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-                data-aos="zoom-in-left"
-              >
-                <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                  <p className="">
-                    <GiFlute className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                  </p>
-                  <p>Recorder Performances</p>
-                </div>
-
-                <div className="!mt-[1.3rem]">
-                  <p>Captivating recorder sounds that blend creativity with</p>
-                  <p>tradition. Perfect for live shows and viral content.</p>
-                  <p>This instrument has helped me grow an audience of </p>
-                  <p>
-                    over 78k followers —it’s more than music, it’s a movement.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-                data-aos="zoom-in-left"
-              >
-                <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                  <p className="">
-                    <FaVideo className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                  </p>
-                  <p>Music Content Creation</p>
-                </div>
-
-                <div className="!mt-[1.3rem]">
-                  <p>Entertaining and visually engaging content for TikTok,</p>
-                  <p>Instagram, and YouTube. Includes live covers,</p>
-                  <p>and freestyle sessions with the saxophone and recorder.</p>
-                </div>
-              </div>
-
-              <div
-                className={`text-white border-[4px] border-[#7911ee] rounded-[5px] !p-[1rem] h-[13rem] w-[80%] flex flex-col items-center text-center justify-center hover:shadow-[0px_0px_15px_0px_#7911ee] hover:${serviceClassCard} transition-all duration-300`}
-                data-aos="zoom-in-right"
-              >
-                <div className="flex text-center items-center font-[Roboto] text-[25px] font-bold gap-[0.6rem]">
-                  <p className="">
-                    <FaMicrophoneLines className="!bg-[white] text-[#7911ee] w-[30px] h-[auto] !p-[0.3rem] rounded-full" />
-                  </p>
-                  <p>Studio Recording & Session Work</p>
-                </div>
-
-                <div className="!mt-[1.3rem]">
-                  <p>High-quality saxophone and recorder recordings</p>
-                  <p>for songs, intros, and media.</p>
-                  <p>Clean audio for artists, producers, and creatives</p>
-                  <p>who need expressive wind instrument parts.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+      {/* Active project pill */}
+      <div className="mt-4 flex items-center gap-2 border border-borderLight rounded-xl px-3 py-2.5">
+        <span className="w-2 h-2 rounded-full bg-green-500 shrink-0 animate-pulse" />
+        <p className="text-[12px] text-textBody font-medium">AJ Empire store — live</p>
+        <span className="ml-auto text-[11px] text-accent font-semibold">↗</span>
       </div>
     </div>
   );
 };
+
+const Services = () => (
+  <section className="w-full py-16">
+    {/* Section label */}
+    <div className="text-center mb-12">
+      <span className="inline-flex items-center gap-2 bg-accentLight text-accent text-[12px] font-semibold px-4 py-1.5 rounded-full mb-4">
+        What I offer
+      </span>
+      <h2 className="font-sans font-bold text-[36px] lg:text-[44px] text-textHead leading-tight tracking-tight">
+        What I bring to
+        <br />
+        <span className="text-accent">your project</span>
+      </h2>
+    </div>
+
+    {/* Two-column body */}
+    <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
+
+      {/* Left: service rows */}
+      <div className="lg:w-[52%] w-full flex flex-col divide-y divide-borderLight">
+        {services.map(({ Icon, title, desc }, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-5 py-5 group cursor-default"
+            data-aos="fade-right"
+            data-aos-delay={i * 80}
+          >
+            <div className="bg-accentLight rounded-xl p-3 shrink-0 group-hover:bg-accent transition-colors duration-200">
+              <Icon className="text-accent group-hover:text-white transition-colors duration-200" size={20} />
+            </div>
+            <div className="flex-1">
+              <p className="font-sans font-semibold text-[16px] text-textHead">{title}</p>
+              <p className="font-sans text-[14px] text-textBody leading-snug mt-0.5">{desc}</p>
+            </div>
+            <HiArrowRight
+              size={18}
+              className="text-textMuted group-hover:text-accent group-hover:translate-x-1 transition-all duration-200 shrink-0"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Right: mock dashboard */}
+      <div className="lg:w-[44%] w-full flex justify-center" data-aos="fade-left">
+        <MockDashboard />
+      </div>
+    </div>
+  </section>
+);
 
 export default Services;

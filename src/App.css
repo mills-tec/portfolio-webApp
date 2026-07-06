@@ -1,24 +1,36 @@
 * {
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-.marquee {
-  animation: marquee 15s linear infinite;
-  white-space: nowrap;
-  display: flex;
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
-  background-color: #021024;
+  background-color: #f4f3fa;
+  color: #111114;
+  font-family: "Inter", sans-serif;
 }
+
+/* Seamless marquee for tech strip */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+/* Hero floating cards */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.float-1 { animation: float-y 3.2s ease-in-out infinite; }
+.float-2 { animation: float-y 4.0s ease-in-out infinite 0.9s; }
+.float-3 { animation: float-y 3.6s ease-in-out infinite 1.8s; }
