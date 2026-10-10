@@ -4,7 +4,7 @@ import ProjectModule from "./common/ProjectModule";
 import shortlet from "../assets/apartment.png";
 import ileelan from "../assets/interiordesgin.png";
 import vivanabeauty from "../assets/project5.png";
-
+import tecterminal from "../assets/tecterminal.png";
 const projects = [
   {
     name: "Shortlet Apartment",
@@ -32,6 +32,13 @@ const projects = [
     placeholderColor: "#FFF0F5",
     liveLink: "https://viva-nail-spa.vercel.app/",
     img: vivanabeauty,
+  },
+  {
+    name: "Tecterminal",
+    category: "EdTech & School Management",
+    placeholderColor: "#FFF0F5",
+    liveLink: "https://tecterminal.com/",
+    img: tecterminal,
   },
   {
     name: "VTU App",

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import personalImg from "../assets/WhatsApp Image 2024-10-21 at 08.43.27_0d3a7942.jpg";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import portimg from "../assets/protimg.png";
 
 const stats = [
   { value: "10+", label: "Projects shipped" },
@@ -27,7 +28,7 @@ const About = ({ contactRef, showResume, setShowResume }) => {
             <div className="absolute w-full h-full bg-accentLight rounded-[28px] top-5 left-5 z-0 rotate-2" />
             <div className="relative z-10 w-[300px] h-[370px] rounded-[28px] overflow-hidden border-4 border-white shadow-2xl">
               <img
-                src={personalImg}
+                src={portimg}
                 alt="Prince Nsude"
                 className="w-full h-full object-cover object-top"
               />
@@ -45,13 +46,16 @@ const About = ({ contactRef, showResume, setShowResume }) => {
           </span>
 
           <h2 className="font-sans font-bold text-[36px] lg:text-[44px] text-textHead leading-tight tracking-tight">
-            Hi — I'm <span className="text-accent">Prince Nsude</span>
+            Hi — I'm <span className="text-accent">Prince Oluchukwu</span>
           </h2>
 
           <p className="font-sans text-[16px] text-textBody leading-relaxed">
-            I'm a Full-Stack Developer based in Lagos, Nigeria. I specialise in
-            React and Next.js, and I love turning complex ideas into clean, fast
-            digital products. I care deeply about the details — from
+            I'm a Full-Stack Developer based in Enugu, Nigeria, with 4 years of
+            experience building with Next.js, TypeScript, Supabase, and Python.
+            I'm the founder of EazyCodes, building web platforms for businesses,
+            and Coders-Versity, a tech training academy. I also work in prompt
+            engineering, designing structured, reliable AI-assisted features. I
+            love turning complex ideas into clean, fast digital products — from
             pixel-perfect layouts to smooth API integrations.
           </p>
 
@@ -60,14 +64,14 @@ const About = ({ contactRef, showResume, setShowResume }) => {
             Away from the screen I perform as a recorder and saxophone player in
             afrobeats — you might know me as{" "}
             <a
-              href="https://www.instagram.com/talentdprince/"
+              href="https://www.instagram.com/talentd_prince/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent font-semibold not-italic hover:underline"
             >
-              @Talentdprince
-            </a>{" "}
-            (1 k+ followers and counting).
+              @Talentd_prince
+            </a>
+            (1 k+ followers and counting on tiktok).
           </p>
 
           {/* Stats */}
@@ -94,11 +98,22 @@ const About = ({ contactRef, showResume, setShowResume }) => {
             >
               Hire Me
             </button>
-            <button
+            {/* <button
               onClick={() => setShowResume(!showResume)}
               className="border border-borderLight text-textBody px-7 py-3 rounded-full font-sans font-semibold text-[14px] hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer bg-white"
             >
               View Résumé
+            </button> */}
+            <button
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/Prince_CV.pdf";
+                link.download = "Prince_CV.pdf";
+                link.click();
+              }}
+              className="border border-borderLight text-textBody px-7 py-3 rounded-full font-sans font-semibold text-[14px] hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer bg-white"
+            >
+              Download Résumé
             </button>
           </div>
         </div>
